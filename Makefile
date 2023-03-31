@@ -9,7 +9,6 @@ APP_PIECES += rbtree-rtems-extract
 APP_PIECES += rbtree-rtems-insert
 APP_PIECES += rbtree-rtems-next
 APP_PIECES += test-bheap
-APP_PIECES += test-rbtree-boost
 APP_PIECES += test-rbtree-bsd
 APP_PIECES += test-rbtree-bsd-for-rtems
 APP_PIECES += test-rbtree-chain
@@ -33,12 +32,10 @@ DEPFLAGS = -MT $@ -MD -MP -MF $*.d
 
 CFLAGS += $(DEPFLAGS) -O2 -g -Wall -Wextra
 
-CXXFLAGS += $(CFLAGS)
-
 all: $(APP)
 
 $(APP): $(APP_O_FILES)
-	$(CXX) $(CXXFLAGS) $^ -o $(APP)
+	$(CC) $(CFLAGS) $^ -o $(APP)
 
 clean:
 	rm -f $(APP) $(APP_O_FILES) $(APP_DEP_FILES)

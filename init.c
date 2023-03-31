@@ -71,7 +71,6 @@ static void run(void)
   test_rbtree_rtems_compact();
   test_rbtree_rb_new();
   test_rbtree_rtems();
-  test_rbtree_boost();
   test_rbtree_rb();
   test_bheap();
   test_rbtree_jffs2();
