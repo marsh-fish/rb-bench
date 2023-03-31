@@ -1,44 +1,45 @@
-APP_PIECES = init
-APP_PIECES += rbtree-ec
-APP_PIECES += rbtree-jffs2
-APP_PIECES += rbtree-linux
-APP_PIECES += rbtree-rtems-compact-extract
-APP_PIECES += rbtree-rtems-compact-insert
-APP_PIECES += rbtree-rtems-compact-next
-APP_PIECES += rbtree-rtems-extract
-APP_PIECES += rbtree-rtems-insert
-APP_PIECES += rbtree-rtems-next
-APP_PIECES += test-bheap
-APP_PIECES += test-rbtree-bsd
-APP_PIECES += test-rbtree-bsd-for-rtems
-APP_PIECES += test-rbtree-chain
-APP_PIECES += test-rbtree-ec
-APP_PIECES += test-rbtree-jffs2
-APP_PIECES += test-rbtree-linux
-APP_PIECES += test-rbtree-llrb
-APP_PIECES += test-rbtree-rb
-APP_PIECES += test-rbtree-rb-new
-APP_PIECES += test-rbtree-rb-old
-APP_PIECES += test-rbtree-rtems
-APP_PIECES += test-rbtree-rtems-compact
-APP_PIECES += test-rbtree-tailq
+SRC = init
+SRC += rbtree-ec
+SRC += rbtree-jffs2
+SRC += rbtree-linux
+SRC += rbtree-rtems-compact-extract
+SRC += rbtree-rtems-compact-insert
+SRC += rbtree-rtems-compact-next
+SRC += rbtree-rtems-extract
+SRC += rbtree-rtems-insert
+SRC += rbtree-rtems-next
+SRC += test-bheap
+SRC += test-rbtree-bsd
+SRC += test-rbtree-bsd-for-rtems
+SRC += test-rbtree-chain
+SRC += test-rbtree-ec
+SRC += test-rbtree-jffs2
+SRC += test-rbtree-linux
+SRC += test-rbtree-llrb
+SRC += test-rbtree-rb
+SRC += test-rbtree-rb-new
+SRC += test-rbtree-rb-old
+SRC += test-rbtree-rtems
+SRC += test-rbtree-rtems-compact
+SRC += test-rbtree-tailq
 
-APP_O_FILES = $(APP_PIECES:%=%.o)
-APP_DEP_FILES = $(APP_PIECES:%=%.d)
+OBJS = $(SRC:%=%.o)
+deps := $(OBJS:%.o=.%.o.d)
 
 APP = app.exe
 
-DEPFLAGS = -MT $@ -MD -MP -MF $*.d
-
-CFLAGS += $(DEPFLAGS) -O2 -g -Wall -Wextra
+CFLAGS += -O2 -g -Wall -Wextra
 
 all: $(APP)
 
-$(APP): $(APP_O_FILES)
+$(APP): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $(APP)
 
+%.o: %.c
+	$(CC) -o $@ $(CFLAGS) -c -MMD -MF .$@.d $<
+
 clean:
-	rm -f $(APP) $(APP_O_FILES) $(APP_DEP_FILES)
+	rm -f $(APP) $(OBJS) $(deps)
 
 REPORTS = $(wildcard reports/*.xml)
 
@@ -47,7 +48,4 @@ images: $(REPORTS:%.xml=%.png)
 %.png: %.xml
 	python plot.py $< $@
 
-%.d:
-	touch $@
-
--include $(APP_DEP_FILES)
+-include $(deps)
