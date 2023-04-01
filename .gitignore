@@ -1,3 +1,6 @@
 rb-bench
 *.o
 *.d
+
+# external source
+rbtree-jemalloc.h
