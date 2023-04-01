@@ -1,6 +1,5 @@
 SRC = init
 SRC += rbtree-ec
-SRC += rbtree-jffs2
 SRC += rbtree-linux
 SRC += rbtree-rtems-compact-extract
 SRC += rbtree-rtems-compact-insert
@@ -13,7 +12,6 @@ SRC += test-rbtree-bsd
 SRC += test-rbtree-bsd-for-rtems
 SRC += test-rbtree-chain
 SRC += test-rbtree-ec
-SRC += test-rbtree-jffs2
 SRC += test-rbtree-linux
 SRC += test-rbtree-llrb
 SRC += test-rbtree-rb

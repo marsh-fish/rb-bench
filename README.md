@@ -2,7 +2,6 @@
 
 The following implementations are tested
 
-* [Boost](http://www.boost.org/doc/libs/1_57_0/doc/html/boost/intrusive/rbtree.html)
 * [BSD](https://github.com/freebsd/freebsd/blob/master/sys/sys/tree.h)
 * BSD for RTEMS - Maybe the next implementation for RTEMS
 * [Chain](https://github.com/RTEMS/rtems/blob/master/cpukit/score/include/rtems/score/chain.h)
@@ -10,7 +9,6 @@ The following implementations are tested
 * [Jason Evans - Newer](http://www.canonware.com/download/rb/rb_newer/)
 * [Jason Evans - New](http://www.canonware.com/download/rb/rb_new/)
 * [Jason Evans - Old](http://www.canonware.com/download/rb/rb_old/)
-* [JFFS2](https://github.com/RTEMS/rtems/blob/master/cpukit/libfs/src/jffs2/include/linux/rbtree.h)
 * [Left-Leaning](http://www.25thandclement.com/~william/projects/llrb.h.html)
 * [Linux](https://github.com/torvalds/linux/blob/master/include/linux/rbtree.h)
 * RTEMS Compact - Colour is encoded in the parent pointer
