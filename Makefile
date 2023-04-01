@@ -17,6 +17,7 @@ UNAME=$(shell uname)
 CFLAGS = -DPLATFORM=\"$(UNAME)\"
 
 CFLAGS += -O2 -Wall -Wextra
+CFLAGS += -Wno-unused-function -Wno-unused-parameter
 
 all: $(BIN)
 
