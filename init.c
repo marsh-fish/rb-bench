@@ -26,11 +26,19 @@
 #include "compat.h"
 #include "test.h"
 
+#if defined(__linux__)
+#define PLATFORM "Linux"
+#elif defined(__APPLE__)
+#define PLATFORM "macOS"
+#elif defined(__FreeBSD__)
+#define PLATFORM "FreeBSD"
+#else /* generic */
 #define PLATFORM "POSIX"
+#endif
 
 static void run(void)
 {
-  printk(
+  printf(
     "<RBTestCollection platform=\"" PLATFORM "\" compiler=\"GCC %i.%i.%i\" timeUnit=\"ns\">\n",
     __GNUC__,
     __GNUC_MINOR__,
@@ -52,7 +60,7 @@ static void run(void)
   test_rbtree_chain();
   test_rbtree_tailq();
 
-  printk("</RBTestCollection>\n");
+  printf("</RBTestCollection>\n");
 }
 
 int main()

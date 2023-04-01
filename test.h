@@ -45,7 +45,7 @@ extern "C" {
 
 typedef uint64_t ticks;
 
-#define printk printf
+#define printf printf
 
 static inline uintptr_t ticks_read(void)
 {
@@ -165,7 +165,7 @@ static inline void test_random_ops(
   t1 = ticks_read();
   d = ticks_difference(t1, t0);
 
-  printk(
+  printf(
     "\t\t\t<Sample nodeCount=\"%lu\" "
       "insertCount=\"%lu\" "
       "extractCount=\"%lu\" "
@@ -221,7 +221,7 @@ static inline void test_linear(
   t1 = ticks_read();
   d = ticks_difference(t1, t0);
 
-  printk(
+  printf(
     "\t\t\t<Sample nodeCount=\"%lu\" "
       "insertCount=\"%lu\" "
       "extractCount=\"%lu\" "
@@ -256,13 +256,13 @@ static inline void test(
   size_t c;
   size_t i;
 
-  printk(
+  printf(
     "\t<RBTest implementation=\"%s\" nodeSize=\"%lu\">\n",
     impl,
     (unsigned long) (node_size - sizeof(test_data))
   );
 
-  printk("\t\t<SmallSetRandomOps>\n");
+  printf("\t\t<SmallSetRandomOps>\n");
 
   for (i = 1; i < small_set_size; ++i) {
     test_random_ops(
@@ -277,9 +277,9 @@ static inline void test(
     );
   }
 
-  printk("\t\t</SmallSetRandomOps>\n");
+  printf("\t\t</SmallSetRandomOps>\n");
 
-  printk("\t\t<LargeSetRandomOps>\n");
+  printf("\t\t<LargeSetRandomOps>\n");
 
   c = i;
 
@@ -298,9 +298,9 @@ static inline void test(
     c = large_set_next(c);
   }
 
-  printk("\t\t</LargeSetRandomOps>\n");
+  printf("\t\t</LargeSetRandomOps>\n");
 
-  printk("\t\t<SmallSetLinear>\n");
+  printf("\t\t<SmallSetLinear>\n");
 
   for (i = 1; i < small_set_size; ++i) {
     test_linear(
@@ -314,9 +314,9 @@ static inline void test(
     );
   }
 
-  printk("\t\t</SmallSetLinear>\n");
+  printf("\t\t</SmallSetLinear>\n");
 
-  printk("\t\t<LargeSetLinear>\n");
+  printf("\t\t<LargeSetLinear>\n");
 
   c = i;
 
@@ -334,9 +334,9 @@ static inline void test(
     c = large_set_next(c);
   }
 
-  printk("\t\t</LargeSetLinear>\n");
+  printf("\t\t</LargeSetLinear>\n");
 
-  printk("\t</RBTest>\n");
+  printf("\t</RBTest>\n");
 }
 
 void test_bheap(void);
