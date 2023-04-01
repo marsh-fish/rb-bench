@@ -61,7 +61,7 @@ static void test_rb_linux_insert(void *tree, void *node)
   struct rb_node *parent = NULL;
 
   while (*next != NULL) {
-    const test_rb_linux_node *c = RTEMS_CONTAINER_OF(*next, test_rb_linux_node, node);
+    const test_rb_linux_node *c = container_of(*next, test_rb_linux_node, node);
 
     parent = *next;
 

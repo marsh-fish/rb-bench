@@ -1,23 +1,14 @@
 SRC = init
 SRC += rbtree-ec
 SRC += rbtree-linux
-SRC += rbtree-rtems-compact-extract
-SRC += rbtree-rtems-compact-insert
-SRC += rbtree-rtems-compact-next
-SRC += rbtree-rtems-extract
-SRC += rbtree-rtems-insert
-SRC += rbtree-rtems-next
 SRC += test-bheap
 SRC += test-rbtree-bsd
-SRC += test-rbtree-bsd-for-rtems
 SRC += test-rbtree-ec
 SRC += test-rbtree-linux
 SRC += test-rbtree-llrb
 SRC += test-rbtree-rb
 SRC += test-rbtree-rb-new
 SRC += test-rbtree-rb-old
-SRC += test-rbtree-rtems
-SRC += test-rbtree-rtems-compact
 
 OBJS = $(SRC:%=%.o)
 deps := $(OBJS:%.o=.%.o.d)

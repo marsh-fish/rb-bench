@@ -44,12 +44,8 @@
 #define __always_inline inline __attribute__((always_inline))
 #endif
 
-#ifndef RTEMS_INLINE_ROUTINE
-#define RTEMS_INLINE_ROUTINE static inline
-#endif
-
-#ifndef RTEMS_CONTAINER_OF
-#define RTEMS_CONTAINER_OF( _m, _type, _member_name ) \
+#ifndef container_of
+#define container_of( _m, _type, _member_name ) \
   ( (_type *) ( (uintptr_t) ( _m ) - offsetof( _type, _member_name ) ) )
 #endif
 
