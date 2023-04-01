@@ -6,9 +6,7 @@ SRC += test-rbtree-bsd
 SRC += test-rbtree-ec
 SRC += test-rbtree-linux
 SRC += test-rbtree-llrb
-SRC += test-rbtree-rb
-SRC += test-rbtree-rb-new
-SRC += test-rbtree-rb-old
+SRC += test-rbtree-jemalloc
 
 OBJS = $(SRC:%=%.o)
 deps := $(OBJS:%.o=.%.o.d)

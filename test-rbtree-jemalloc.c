@@ -27,71 +27,71 @@
 #define RB_COMPACT
 
 #include "compat.h"
-#include "rbtree-rb-new.h"
+#include "rbtree-jemalloc.h"
 #include "test.h"
 
-typedef struct test_rb_new_node test_rb_new_node;
+typedef struct test_rb_jemalloc_node test_rb_jemalloc_node;
 
-struct test_rb_new_node {
-  rb_node(test_rb_new_node) node;
+struct test_rb_jemalloc_node {
+  rb_node(test_rb_jemalloc_node) node;
   test_data data;
 };
 
-typedef rb_tree(test_rb_new_node) test_rb_new_tree;
+typedef rb_tree(test_rb_jemalloc_node) test_rb_jemalloc_tree;
 
 static int node_cmp(
-  const test_rb_new_node *n1,
-  const test_rb_new_node *n2
+  const test_rb_jemalloc_node *n1,
+  const test_rb_jemalloc_node *n2
 )
 {
   return (n2->data.key < n1->data.key) - (n2->data.key > n1->data.key);
 }
 
-rb_wrap(static inline, test_rb_new_, test_rb_new_tree, test_rb_new_node, node, node_cmp);
+rb_gen(static inline, test_rb_jemalloc_, test_rb_jemalloc_tree, test_rb_jemalloc_node, node, node_cmp);
 
-static void test_rb_new_rb_init_tree(void *tree)
+static void test_rb_jemalloc_init_tree(void *tree)
 {
-  test_rb_new_tree *t = tree;
+  test_rb_jemalloc_tree *t = tree;
 
-  test_rb_new_new(t);
+  test_rb_jemalloc_new(t);
 }
 
-static void test_rb_new_rb_init_node(void *node, int key)
+static void test_rb_jemalloc_init_node(void *node, int key)
 {
-  struct test_rb_new_node *n = node;
+  struct test_rb_jemalloc_node *n = node;
 
   n->data.key = key;
 }
 
-static test_data *test_rb_new_rb_get_data(void *node)
+static test_data *test_rb_jemalloc_get_data(void *node)
 {
-  struct test_rb_new_node *n = node;
+  struct test_rb_jemalloc_node *n = node;
 
   return &n->data;
 }
 
-static void test_rb_new_rb_insert(void *tree, void *node)
+static void test_rb_jemalloc_insert_(void *tree, void *node)
 {
-  test_rb_new_insert(tree, node);
+  test_rb_jemalloc_insert(tree, node);
 }
 
-static void test_rb_new_rb_extract(void *tree, void *node)
+static void test_rb_jemalloc_extract(void *tree, void *node)
 {
-  test_rb_new_remove(tree, node);
+  test_rb_jemalloc_remove(tree, node);
 }
 
-void test_rbtree_rb_new(void)
+void test_rbtree_jemalloc(void)
 {
-  test_rb_new_tree tree;
+  test_rb_jemalloc_tree tree;
 
   test(
-    "RB New Compact",
+    "jemalloc",
     &tree,
-    sizeof(test_rb_new_node),
-    test_rb_new_rb_init_tree,
-    test_rb_new_rb_init_node,
-    test_rb_new_rb_get_data,
-    test_rb_new_rb_insert,
-    test_rb_new_rb_extract
+    sizeof(test_rb_jemalloc_node),
+    test_rb_jemalloc_init_tree,
+    test_rb_jemalloc_init_node,
+    test_rb_jemalloc_get_data,
+    test_rb_jemalloc_insert_,
+    test_rb_jemalloc_extract
   );
 }

@@ -349,11 +349,7 @@ void test_rbtree_linux(void);
 
 void test_rbtree_llrb(void);
 
-void test_rbtree_rb(void);
-
-void test_rbtree_rb_new(void);
-
-void test_rbtree_rb_old(void);
+void test_rbtree_jemalloc(void);
 
 #ifdef __cplusplus
 }

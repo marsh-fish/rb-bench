@@ -48,11 +48,9 @@ static void run(void)
   /* Ordered according to runtime, slowest first */
   test_rbtree_llrb();
   test_rbtree_ec();
-  test_rbtree_rb_new();
-  test_rbtree_rb();
+  test_rbtree_jemalloc();
   test_bheap();
   test_rbtree_bsd();
-  test_rbtree_rb_old();
   test_rbtree_linux();
 
   printf("</RBTestCollection>\n");
