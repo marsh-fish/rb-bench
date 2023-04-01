@@ -1,4 +1,5 @@
-#
+#!/usr/bin/env python3
+
 # Copyright (c) 2014 embedded brains GmbH.  All rights reserved.
 #
 #  embedded brains GmbH
@@ -27,7 +28,6 @@
 # THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
 
 import sys
 import libxml2

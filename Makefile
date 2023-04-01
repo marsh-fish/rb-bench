@@ -34,7 +34,7 @@ $(BIN): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $(BIN)
 
 %.o: %.c
-	$(CC) -o $@ $(CFLAGS) -c -MMD -MF .$@.d $<
+	$(CC) $(CFLAGS) -o $@ -c -MMD -MF .$@.d $<
 
 clean:
 	rm -f $(BIN) $(OBJS) $(deps)
