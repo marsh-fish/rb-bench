@@ -341,17 +341,11 @@ static inline void test(
 
 void test_bheap(void);
 
-void test_rbtree_boost(void);
-
 void test_rbtree_bsd(void);
 
 void test_rbtree_bsd_for_rtems(void);
 
-void test_rbtree_chain(void);
-
 void test_rbtree_ec(void);
-
-void test_rbtree_jffs2(void);
 
 void test_rbtree_linux(void);
 
@@ -366,8 +360,6 @@ void test_rbtree_rb_old(void);
 void test_rbtree_rtems(void);
 
 void test_rbtree_rtems_compact(void);
-
-void test_rbtree_tailq(void);
 
 #ifdef __cplusplus
 }
