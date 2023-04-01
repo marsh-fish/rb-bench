@@ -49,6 +49,10 @@
   ( (_type *) ( (uintptr_t) ( _m ) - offsetof( _type, _member_name ) ) )
 #endif
 
+#ifndef __uintptr_t
+#define __uintptr_t uintptr_t
+#endif
+
 #define EXPORT_SYMBOL(x)
 
 #endif /* COMPAT_H */

@@ -4,3 +4,4 @@ rb-bench
 
 # external source
 rbtree-jemalloc.h
+rbtree-freebsd.h

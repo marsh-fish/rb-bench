@@ -24,7 +24,7 @@
  */
 
 #include "compat.h"
-#include "rbtree-bsd.h"
+#include "rbtree-freebsd.h"
 #include "test.h"
 
 typedef struct test_rb_bsd_node {
@@ -79,7 +79,7 @@ void test_rbtree_bsd(void)
   struct test_rb_bsd_tree tree;
 
   test(
-    "BSD",
+    "FreeBSD",
     &tree,
     sizeof(test_rb_bsd_node),
     test_rb_bsd_init_tree,
