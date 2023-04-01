@@ -35,30 +35,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifdef __rtems__
-
-#include <rtems.h>
-#include <rtems/bspIo.h>
-
-#else /* __rtems__ */
-
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <stdio.h>
-
-#endif /* __rtems__ */
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
 typedef uint64_t ticks;
-
-#ifdef __rtems__
-
-#define ticks_read() rtems_clock_get_uptime_nanoseconds()
-
-#else /* __rtems__ */
 
 #define printk printf
 
@@ -70,8 +55,6 @@ static inline uintptr_t ticks_read(void)
 
 	return r.ru_utime.tv_sec * 1000000000ULL + r.ru_utime.tv_usec * 1000ULL;
 }
-
-#endif /* __rtems__ */
 
 #define ticks_difference(t1, t0) ((t1) - (t0))
 

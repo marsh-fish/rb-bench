@@ -26,35 +26,7 @@
 #include "compat.h"
 #include "test.h"
 
-#ifdef __rtems__
-
-#include <bsp.h>
-
-#if defined(LIBBSP_ARM_ALTERY_CYCLONE_V_BSP_H)
-  #define PLATFORM "Altera Cyclone V, Cortex-A9 MPCore"
-#elif defined(LIBBSP_ARM_XILINX_ZYNQ_BSP_H)
-  #define PLATFORM "Xilinx Zynq, Cortex-A9 MPCore"
-#elif defined(LIBBSP_POWERPC_MPC55XXEVB_BSP_H)
-  #define PLATFORM "Freescale MPC5564, e200z6"
-#elif QORIQ_CHIP_VARIANT == QORIQ_CHIP_P1020
-  #define PLATFORM "Freescale P1020, e500v2"
-#elif QORIQ_CHIP_VARIANT == QORIQ_CHIP_T4240
-  #define PLATFORM "Freescale T4240, e6500"
-#elif defined(__GENMCF548X_BSP_H) || defined(LIBBSP_M68K_GENMCF548X_BSP_H)
-  #define PLATFORM "Freescale MCF5484, Coldfire V4e"
-#elif defined(LEON3) || defined(LIBBSP_SPARC_LEON3_BSP_H)
-  #define PLATFORM "Cobham Gaisler NGMP, LEON4FT"
-#elif defined(LIBBSP_SPARC_ERC32_BSP_H)
-  #define PLATFORM "SIS, GDB"
-#else
-  #error "unknown BSP"
-#endif
-
-#else /* __rtems__ */
-
-#define PLATFORM "Linux"
-
-#endif /* __rtems__ */
+#define PLATFORM "POSIX"
 
 static void run(void)
 {
@@ -84,49 +56,9 @@ static void run(void)
   printk("</RBTestCollection>\n");
 }
 
-#ifndef __rtems__
-
 int main()
 {
 	run();
 
 	return 0;
 }
-
-#else /* __rtems__ */
-
-#include <rtems.h>
-#include <rtems/test.h>
-
-const char rtems_test_name[] = "TREE BENCHMARK";
-
-static void Init(rtems_task_argument arg)
-{
-  rtems_test_begink();
-
-  run();
-
-  rtems_test_endk();
-  exit(0);
-}
-
-#define CONFIGURE_MICROSECONDS_PER_TICK 1000
-
-#define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
-#define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
-
-#define CONFIGURE_INITIAL_EXTENSIONS RTEMS_TEST_INITIAL_EXTENSION
-
-#define CONFIGURE_INIT_TASK_ATTRIBUTES RTEMS_FLOATING_POINT
-
-#define CONFIGURE_RTEMS_INIT_TASKS_TABLE
-
-#define CONFIGURE_UNIFIED_WORK_AREAS
-
-#define CONFIGURE_UNLIMITED_OBJECTS
-
-#define CONFIGURE_INIT
-
-#include <rtems/confdefs.h>
-
-#endif /* __rtems__ */

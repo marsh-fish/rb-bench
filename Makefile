@@ -26,20 +26,20 @@ SRC += test-rbtree-tailq
 OBJS = $(SRC:%=%.o)
 deps := $(OBJS:%.o=.%.o.d)
 
-APP = app.exe
+BIN = rb-bench
 
 CFLAGS += -O2 -g -Wall -Wextra
 
-all: $(APP)
+all: $(BIN)
 
-$(APP): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $(APP)
+$(BIN): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $(BIN)
 
 %.o: %.c
 	$(CC) -o $@ $(CFLAGS) -c -MMD -MF .$@.d $<
 
 clean:
-	rm -f $(APP) $(OBJS) $(deps)
+	rm -f $(BIN) $(OBJS) $(deps)
 
 REPORTS = $(wildcard reports/*.xml)
 
