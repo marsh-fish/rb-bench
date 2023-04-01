@@ -45,8 +45,6 @@ extern "C" {
 
 typedef uint64_t ticks;
 
-#define printf printf
-
 static inline uintptr_t ticks_read(void)
 {
 	struct rusage r;
@@ -75,12 +73,16 @@ typedef void (*tree_insert)(void *tree, void *node);
 
 typedef void (*tree_extract)(void *tree, void *node);
 
-static inline uint32_t simple_random( uint32_t v )
+static inline uint32_t simple_random(uint32_t x)
 {
-  v *= 1664525;
-  v += 1013904223;
+  /* by Chris Wellons, see: <https://nullprogram.com/blog/2018/07/31/> */
+  x ^= x >> 16;
+  x *= 0x7feb352dUL;
+  x ^= x >> 15;
+  x *= 0x846ca68bUL;
+  x ^= x >> 16;
 
-  return v;
+  return x;
 }
 
 static inline void *get_node(void *nodes, size_t node_size, size_t i)

@@ -13,7 +13,7 @@ deps := $(OBJS:%.o=.%.o.d)
 
 BIN = rb-bench
 
-CFLAGS += -O2 -g -Wall -Wextra
+CFLAGS += -O2 -Wall -Wextra
 
 all: $(BIN)
 
