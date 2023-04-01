@@ -13,6 +13,9 @@ deps := $(OBJS:%.o=.%.o.d)
 
 BIN = rb-bench
 
+UNAME=$(shell uname)
+CFLAGS = -DPLATFORM=\"$(UNAME)\"
+
 CFLAGS += -O2 -Wall -Wextra
 
 all: $(BIN)

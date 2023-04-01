@@ -26,16 +26,6 @@
 #include "compat.h"
 #include "test.h"
 
-#if defined(__linux__)
-#define PLATFORM "Linux"
-#elif defined(__APPLE__)
-#define PLATFORM "macOS"
-#elif defined(__FreeBSD__)
-#define PLATFORM "FreeBSD"
-#else /* generic */
-#define PLATFORM "POSIX"
-#endif
-
 static void run(void)
 {
   printf(
