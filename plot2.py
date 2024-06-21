@@ -58,12 +58,10 @@ def plotTest(test):
 		plt.plot(x, y, label = i)
 	plt.legend(fontsize = 10, bbox_to_anchor=(0.3, 0.9))
 
-
 plt.figure(figsize = (30.0 / cmPerInch, 2 * 30.0 / 1.618 / cmPerInch))
+plt.title('x')
 plt.subplot(211)
-plotTest('SmallSetLinear')
+plotTest('SmallSetLinear');
 plt.subplot(212)
-plotTest('SmallSetRandomOps')
-
+plotTest('SmallSetRandomOps');
 plt.savefig(sys.argv[2])
-plt.show()

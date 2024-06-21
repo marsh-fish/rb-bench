@@ -46,6 +46,6 @@ REPORTS = $(wildcard reports/*.xml)
 images: $(REPORTS:%.xml=%.png)
 
 %.png: %.xml
-	python plot.py $< $@
+	./plot.py $< $@
 
 -include $(deps)
