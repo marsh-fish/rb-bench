@@ -253,7 +253,7 @@ static inline void test(
   tree_extract extract
 )
 {
-  size_t small_set_size = 128;
+  size_t small_set_size = 1024;
   size_t large_set_size = 1;
   size_t c;
   size_t i;
